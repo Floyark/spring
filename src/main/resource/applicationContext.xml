@@ -55,6 +55,7 @@
             </map>
         </property>
     </bean>
+    <import resource="com/applicationContext2.xml"/>
 
     <bean id="beanProperties" class="com.bean.BeanProperties">
         <property name="pre">

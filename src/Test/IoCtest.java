@@ -2,6 +2,7 @@ import com.bean.*;
 import com.service.MyServImpl;
 import com.service.MyService;
 import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -42,6 +43,7 @@ public class IoCtest {
         System.out.println(beanList.toString());
     }
 
+
     @Test
     public void testFive(){
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -54,5 +56,14 @@ public class IoCtest {
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
         BeanProperties beanProperties= (BeanProperties) applicationContext.getBean("beanProperties");
         System.out.println(beanProperties.toString());
+    }
+
+
+
+    @Test
+    public void textSeven(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        BeanMap map= (BeanMap) applicationContext.getBean("beanMap");
+        System.out.println(map.toString());
     }
 }
