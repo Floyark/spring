@@ -1,17 +1,67 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:aop="http://www.springframework.org/schema/aop"
+      xmlns:tx="http://www.springframework.org/schema/tx"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd"
-       default-autowire="byType">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="myServImpl" class="com.service.MyServImpl">
+        <property name="name" value="zhangsan"></property>
+        <property name="myDao" ref="myDao"></property>
+    </bean>
+
+    <bean id="myDao" class="com.dao.MyDao"></bean>
+
+    <bean id="myBean" class="com.bean.MyBean">
+        <constructor-arg name="name" value="mybean1_name"></constructor-arg>
+        <constructor-arg name="age" value="mybean1_age"></constructor-arg>
+    </bean>
+
+
+    <bean id="beanArray" class="com.bean.BeanArray">
+        <property name="strs">
+            <list>
+                <value>xixi</value>
+                <value>hehe</value>
+                <value>haha</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="beanList" class="com.bean.BeanList">
+        <property name="students">
+            <list>
+                <value>xiaohua</value>
+                <value>xiaoming</value>
+                <value>xiaohong</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="beanMap" class="com.bean.BeanMap">
+        <property name="map">
+            <map>
+                <entry key="韩国" value="大长今"></entry>
+                <entry key="日本" value="西瓜太郎"></entry>
+                <entry key="中国" value="西游记"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="beanProperties" class="com.bean.BeanProperties">
+        <property name="pre">
+            <props>
+                <prop key="上海">海上</prop>
+                <prop key="北京">京北</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
