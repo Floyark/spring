@@ -7,6 +7,12 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpRequest;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 
 public class IoCtest {
 
@@ -43,7 +49,6 @@ public class IoCtest {
         System.out.println(beanList.toString());
     }
 
-
     @Test
     public void testFive(){
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -58,12 +63,20 @@ public class IoCtest {
         System.out.println(beanProperties.toString());
     }
 
-
-
     @Test
-    public void textSeven(){
+    public void testSeven(){
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
         BeanMap map= (BeanMap) applicationContext.getBean("beanMap");
         System.out.println(map.toString());
+    }
+
+
+    //web工厂
+    @Test
+    public void testEight(ServletRequest request){
+        
+        ServletContext sc= request.getServletContext();
+        WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(sc);
+        webApplicationContext.getBean("")
     }
 }
