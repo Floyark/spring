@@ -1,19 +1,23 @@
+import com.aop.aspectj.MyDao;
+import com.aop.cglib.myCGLIB;
+import com.aop.cglib.myCGLIBImpl;
+import com.aop.cglib.myCGLIBUtils;
+import com.aop.jdk.MyJDKProxy;
+import com.aop.jdk.MyJDKProxyImpl;
+import com.aop.jdk.MyProxyUtils;
 import com.bean.*;
-import com.service.MyServImpl;
 import com.service.MyService;
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.http.HttpRequest;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-
+import javax.annotation.Resource;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(value = "applicationContext.xml" )
 public class IoCtest {
 
 
@@ -71,12 +75,36 @@ public class IoCtest {
     }
 
 
-    //web工厂
+    //JDK Proxy aop
     @Test
-    public void testEight(ServletRequest request){
-        
-        ServletContext sc= request.getServletContext();
-        WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(sc);
-        webApplicationContext.getBean("")
+    public void testEight(){
+        MyJDKProxy myJDKProxy=new MyJDKProxyImpl();
+//        myJDKProxy.save();
+//        myJDKProxy.update();
+//        System.out.println("-----------------");
+        MyJDKProxy myProxy = MyProxyUtils.getMyJDKProxy(myJDKProxy);
+        myProxy.save();
+    }
+
+    @Test
+    public void testNine(){
+        myCGLIB myCGLIB=new myCGLIBImpl();
+        myCGLIB.save();
+        myCGLIB.update();
+        System.out.println("--------------------");
+        myCGLIBImpl myProxy = myCGLIBUtils.getProxy();
+        myProxy.save();
+        myProxy.update();
+    }
+
+
+    @Resource(name="myDaoImpl")
+    private MyDao myDao;
+    @Test
+    public void testTen(){
+//        ApplicationContext applicationContext= new ClassPathXmlApplicationContext("applicationContext.xml");
+//        MyDao myDao = (MyDao) applicationContext.getBean("myDaoImpl");
+        myDao.save();
+        myDao.update();
     }
 }

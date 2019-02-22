@@ -65,4 +65,14 @@
             </props>
         </property>
     </bean>
+
+    <bean id="myDaoImpl" class="com.aop.aspectj.MyDaoImpl"></bean>
+    <!--aop-->
+    <bean id="myAspectJ" class="com.aop.aspectj.MyAspectJ"></bean>
+    <aop:config>
+        <aop:aspect ref="myAspectJ" id="aspect">
+            <aop:pointcut id="pc" expression="execution (public void com.aop.aspectj.MyDaoImpl.save())"
+            <aop:before method="log" pointcut-ref="pc"></aop:before>
+        </aop:aspect>
+    </aop:config>
 </beans>
