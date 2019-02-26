@@ -1,7 +1,7 @@
 package com.aop.aspectj;
 
 public interface MyDao {
-    void save();
-    void update();
+   public void save();
+   public void update();
 
 }
