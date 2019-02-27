@@ -1,6 +1,4 @@
-package com.tx.dao;
-
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
+package com.tx01.dao;
 
 public interface Dao {
     public void putMoney(String out,double Money);

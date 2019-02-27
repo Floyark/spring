@@ -17,11 +17,11 @@ public class myCGLIBUtils {
 
         //设置回调函数
         enhancer.setCallback(new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                System.out.println("ssssss");
-                return null;
-            }
+                @Override
+                public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+                    System.out.println("ssssss");
+                    return null;
+                }
         });
         //生成代理对象
         return (myCGLIBImpl) enhancer.create();

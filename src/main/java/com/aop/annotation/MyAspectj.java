@@ -1,6 +1,7 @@
 package com.aop.annotation;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.junit.Test;
 
@@ -30,15 +31,15 @@ public class MyAspectj {
 
     //引入poincut
     @Around(value = "MyAspectj.fn()")
-    public void around(JoinPoint joinPoint){
+    public void around(ProceedingJoinPoint joinPoint){
         System.out.println("Around方法一");
         System.out.println("");
     }
-
 
     //自己设置poincut
     @Pointcut(value = "execution(* com.aop.annotation.MyDaoImpl.save())")
     public void fn() {
 
     }
+
 }
