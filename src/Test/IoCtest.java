@@ -20,6 +20,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import javax.annotation.Resources;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class IoCtest {
 
@@ -103,6 +107,11 @@ public class IoCtest {
 
     @Test
     public void testTen(){
+        List<String> list=new ArrayList<String>();
+
+        List<String> synlist= Collections.synchronizedList(list);
+
+
 
     }
 }
