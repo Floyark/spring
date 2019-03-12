@@ -299,4 +299,19 @@ public class Test {
         StatiTest statiTest=new StatiTest();
         statiTest.new B().print();
     }
+
+    //Nntern
+    @org.junit.Test
+    public void testSixteen(){
+//        String str1=new String("123");
+//        System.out.println(str1.intern());
+
+        String str1=new String("abc");
+        String str2=new String("abc");
+        System.out.println(str1==str2);
+
+        String str3=new String("qwer");
+        String str4="qwer".intern();
+        System.out.println(str3==str4);
+    }
 }
